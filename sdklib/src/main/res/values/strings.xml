@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">sdklib</string>
+    <string name="payrix_api_url"></string>
+</resources>
