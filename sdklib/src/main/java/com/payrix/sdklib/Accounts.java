@@ -1,5 +1,6 @@
 package com.payrix.sdklib;
 
+import com.payrix.sdklib.data.model.AccountModel;
 import com.payrix.sdklib.data.model.EntityFields;
 import com.payrix.sdklib.data.remote.IAccountService;
 
@@ -18,7 +19,8 @@ public class Accounts implements IPayrixResource {
 
     @Override
     public void create(EntityFields fieldValues) throws PayrixException {
-        service.createAccount()
+
+        service.createAccount(fieldValues);
     }
 
     @Override

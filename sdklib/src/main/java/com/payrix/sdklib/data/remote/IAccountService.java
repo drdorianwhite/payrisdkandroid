@@ -5,6 +5,7 @@ package com.payrix.sdklib.data.remote;
  */
 
 import com.payrix.sdklib.data.model.AccountModel;
+import com.payrix.sdklib.data.model.EntityFields;
 import com.payrix.sdklib.data.model.PayrixAPIResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -18,11 +19,11 @@ public interface IAccountService {
 
     @Headers({"Content-Type: application/json"})
     @POST("/accounts")
-    Call<PayrixAPIResponse> createAccount(AccountModel account);
+    Call<PayrixAPIResponse> createAccount(EntityFields newAccountFieldData);
 
     @Headers({"Content-Type: application/json"})
     @PUT("/accounts/{id}")
-    Call<PayrixAPIResponse> updateAccount(@Path("id") String id,AccountModel accountData);
+    Call<PayrixAPIResponse> updateAccount(@Path("id") String id, EntityFields updatedFieldData);
 
     @DELETE("/accounts/{id}")
     Call<PayrixAPIResponse> deleteAccount(@Path("id") String id);

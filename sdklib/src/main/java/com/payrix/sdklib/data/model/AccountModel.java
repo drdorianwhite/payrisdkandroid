@@ -6,6 +6,7 @@ package com.payrix.sdklib.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.payrix.sdklib.PayrixException;
 
 public class AccountModel
         extends PayrixEntityModel {
@@ -52,6 +53,10 @@ public class AccountModel
     @SerializedName("frozen")
     @Expose
     private Integer frozen;
+
+    public AccountModel() {
+
+    }
 
     public String getId() {
         return id;
