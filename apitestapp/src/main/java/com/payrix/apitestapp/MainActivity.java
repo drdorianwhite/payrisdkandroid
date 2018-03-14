@@ -12,6 +12,7 @@ import android.support.v7.widget.*;
 
 import com.payrix.sdklib.PayrixException;
 import com.payrix.sdklib.data.remote.*;
+import com.payrix.sdklib.Accounts;
 import com.payrix.apitestapp.payrixobjects.AccountContent.*;
 import java.util.*;
 import com.payrix.apitestapp.AccountView.OnAccountItemPostListener;
@@ -20,7 +21,7 @@ import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private IAccountService mService;
+    private Accounts mService;
     private AccountRecyclerViewAdapter mAdapter;
 
     @Override
