@@ -5,7 +5,7 @@ package com.payrix.sdklib;
  */
 
 public class PayrixConfig {
-    public static final String BASE_URL = "https://test-api.splashpayments.com";
+    public static final String BASE_URL = "http://999.com";//"https://test-api.splashpayments.com";
     private static String API_KEY = null;
 
     public static void setAPIKey(String _apiKey) throws PayrixException{

@@ -5,8 +5,29 @@ package com.payrix.sdklib.data.model;
  */
 
 import java.util.List;
-        import com.google.gson.annotations.Expose;
-        import com.google.gson.annotations.SerializedName;
+
+//import com.google.gson.JsonObject;
+import org.json.JSONObject;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import com.payrix.sdklib.PayrixException;
+import com.payrix.sdklib.PayrixResponseException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+/*
+public class PayrixAPIResponse extends Object {
+    public JSONObject toJSON() throws PayrixException {
+        try {
+            return new JSONObject(this.toString());
+        } catch(JSONException e) {
+            throw new PayrixResponseException(e.getMessage());
+        }
+    }
+}
+*/
 
 public class PayrixAPIResponse {
 
@@ -20,7 +41,7 @@ public class PayrixAPIResponse {
     @Expose
     private List<PayrixAPIError> errors = null;
 
-    public List<PayrixEntityModel> getEntity() {
+    public List<PayrixEntityModel> getEntities() {
         return entities;
     }
 

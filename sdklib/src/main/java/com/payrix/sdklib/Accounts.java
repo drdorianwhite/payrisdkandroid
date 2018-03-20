@@ -22,8 +22,7 @@ public class Accounts extends PayrixResource {
 
     @Override
     public void create(EntityFields fieldValues, IPayrixResponseCallback callback) throws PayrixException {
-        Call<PayrixAPIResponse> call =  service.create(fieldValues);
-        handleResponse(call, callback);
+        handleResponse(service.create(fieldValues), callback);
     }
 
     @Override
