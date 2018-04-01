@@ -13,7 +13,9 @@ import com.payrix.sdklib.data.remote.*;
 import retrofit2.Call;
 
 public class Accounts extends PayrixResource {
-        public static String resourceUrl = PayrixConfig.BASE_URL + "/accounts/";
+    static {
+        PayrixResource.relativeUrl = "accounts";
+    }
 
 
     public Accounts(IPayrixService service) throws PayrixException {
@@ -22,7 +24,7 @@ public class Accounts extends PayrixResource {
 
     @Override
     public void create(EntityFields fieldValues, IPayrixResponseCallback callback) throws PayrixException {
-        handleResponse(service.create(fieldValues), callback);
+        handleResponse(service.create(relativeUrl, fieldValues), callback);
     }
 
     @Override
@@ -30,20 +32,23 @@ public class Accounts extends PayrixResource {
         String id = fieldValues.get("id");
         if(id == null) throw new PayrixException("null id");
         fieldValues.remove("id");
-        Call<PayrixAPIResponse> call = service.update(id, fieldValues);
+        String pathWithId = relativeUrl + "/" + id;
+        Call<PayrixAPIResponse> call = service.update(pathWithId, fieldValues);
         handleResponse(call, callback);
     }
 
     @Override
     public void retrieve(QueryFilterOptions options, IPayrixResponseCallback callback) throws PayrixException {
         Call<PayrixAPIResponse> call;
+        String path = relativeUrl;
 
         String id = options.get("id");
         if(id != null) {
-            call = service.retrieve(id);
+            path += "/" + id;
+            call = service.retrieve(path);
         }
         else {
-            call = service.retrieve(options);
+            call = service.retrieve(path, options);
         }
 
         handleResponse(call, callback);
@@ -52,7 +57,8 @@ public class Accounts extends PayrixResource {
 
     @Override
     public void delete(String id, IPayrixResponseCallback callback) throws PayrixException {
-        Call<PayrixAPIResponse> call = service.delete(id);
+        String pathWithId = relativeUrl + "/" + id;
+        Call<PayrixAPIResponse> call = service.delete(pathWithId);
         handleResponse(call, callback);
     }
 }

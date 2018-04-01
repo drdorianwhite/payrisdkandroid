@@ -3,6 +3,8 @@ import android.support.test.runner.AndroidJUnit4;
 import com.payrix.sdklib.data.model.EntityFields;
 import com.payrix.sdklib.data.model.PayrixAPIResponse;
 import com.payrix.sdklib.data.remote.PayrixAPI;
+import com.payrix.sdklib.data.remote.QueryFilterOptions;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -20,7 +22,36 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class PayrixAccountTest {
     @Test//(timeout = 5000)
-    public void accountCreateFunctions() throws Exception {
+    public void accountRetrieveWorks() throws Exception {
+        final AtomicBoolean atomic = new AtomicBoolean(false);
+
+        try {
+            PayrixConfig.setAPIKey("ea29716caf7d4b6c42a28798e06d1f5d");
+            Accounts accounts = PayrixAPI.getAccounts();
+
+            accounts.retrieve(new QueryFilterOptions(), new IPayrixResponseCallback() {
+                @Override
+                public void onSuccess(PayrixAPIResponse response) {
+
+                    assert (response.getErrors() != null);
+                    atomic.set(true);
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    fail();
+                }
+            });
+
+        } catch (PayrixException e) {
+            fail();
+        }
+
+        Awaitility.await().untilTrue(atomic);
+    }
+
+    @Test//(timeout = 5000)
+    public void accountCreateWorks() throws Exception {
         final AtomicBoolean atomic = new AtomicBoolean(false);
 
         try {
@@ -32,17 +63,11 @@ public class PayrixAccountTest {
             fields.put("account[number]", "5");
             fields.put("account[routing]", "qwer1234");
 
-
-            accounts.create(fields, null /*new IPayrixResponseCallback() {
+            accounts.retrieve(new QueryFilterOptions(),  new IPayrixResponseCallback() {
                 @Override
                 public void onSuccess(PayrixAPIResponse response) {
-                    try {
-                        assert(response.toJSON() != null);
-                    } catch (PayrixException e) {
-                        Log.d("test", e.getMessage());
-                        fail();
-                    }
-                    Log.d("test", response.toString());
+
+                    assert(response.getErrors() != null);
                     atomic.set(true);
                 }
 
@@ -50,15 +75,29 @@ public class PayrixAccountTest {
                 public void onFailure(Throwable t) {
                     fail();
                 }
-            })*/);
+            });
 
-            //atomic.set(true);
+            accounts.create(fields, new IPayrixResponseCallback() {
+                @Override
+                public void onSuccess(PayrixAPIResponse response) {
+
+                    assert(response.getErrors() != null);
+                    atomic.set(true);
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    fail();
+                }
+            });
+
+            atomic.set(true);
         }
          catch(PayrixException e) {
             fail();
         }
 
-        //Awaitility.await().untilTrue(atomic);
+        Awaitility.await().untilTrue(atomic);
     }
 }
 

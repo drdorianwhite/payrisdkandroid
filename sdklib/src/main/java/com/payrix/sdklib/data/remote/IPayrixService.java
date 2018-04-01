@@ -11,21 +11,23 @@ import retrofit2.Call;
 import retrofit2.http.*;
 
 public interface IPayrixService {
-    @GET("/")
-    Call<PayrixAPIResponse> retrieve(@QueryMap QueryFilterOptions options);
+    @GET
+    Call<PayrixAPIResponse> retrieve(@Url String path, @HeaderMap QueryFilterOptions options);
 
-    @GET("/{id}")
-    Call<PayrixAPIResponse> retrieve(@Path("id") String id);
-
-    @Headers({"Content-Type: application/json"})
-    @POST("/")
-    Call<PayrixAPIResponse> create(@QueryMap EntityFields newAccountFieldData);
+    @GET
+    Call<PayrixAPIResponse> retrieve(@Url String pathWithId);
 
     @Headers({"Content-Type: application/json"})
-    @PUT("/{id}")
-    Call<PayrixAPIResponse> update(@Path("id") String id, EntityFields updatedFieldData);
+    @POST
+    @FormUrlEncoded
+    Call<PayrixAPIResponse> create(@Url String path, @FieldMap EntityFields newAccountFieldData);
+
+    @Headers({"Content-Type: application/json"})
+    @PUT
+    @FormUrlEncoded
+    Call<PayrixAPIResponse> update(@Url String pathWithId, @FieldMap  EntityFields updatedFieldData);
 
     @DELETE("/{id}")
-    Call<PayrixAPIResponse> delete(@Path("id") String id);
+    Call<PayrixAPIResponse> delete(@Url String pathWithId);
 }
 

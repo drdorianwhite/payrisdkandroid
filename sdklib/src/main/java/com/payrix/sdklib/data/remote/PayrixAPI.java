@@ -4,6 +4,8 @@ import com.payrix.sdklib.Accounts;
 import com.payrix.sdklib.IPayrixResponseCallback;
 import com.payrix.sdklib.PayrixConfig;
 import com.payrix.sdklib.PayrixException;
+import com.payrix.sdklib.PayrixResource;
+
 import retrofit2.Retrofit;
 
 /**
@@ -12,8 +14,7 @@ import retrofit2.Retrofit;
 
 public class PayrixAPI {
     public static Accounts getAccounts() throws PayrixException {
-        String resourceUrl = Accounts.resourceUrl;
-        IPayrixService service = RetrofitClient.getClient(resourceUrl).create(IPayrixService.class);
+        IPayrixService service = RetrofitClient.getClient(PayrixConfig.BASE_URL).create(IPayrixService.class);
         return new Accounts(service);
     }
 }
