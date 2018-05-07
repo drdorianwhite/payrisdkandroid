@@ -23,7 +23,7 @@ public class PayrixAPIResponse {
         return response;
     }
 
-    public void setResponse(PayrixAPIResponseContents) {
+    public void setResponse(PayrixAPIResponseContents response) {
         this.response = response;
     }
 }
