@@ -1,2 +1,6 @@
 got "invalid content-type header" after doing a retrieve (get) request
   * check how PHP one does it...
+
+install php
+download sdk run on test sdk
+install wireshark

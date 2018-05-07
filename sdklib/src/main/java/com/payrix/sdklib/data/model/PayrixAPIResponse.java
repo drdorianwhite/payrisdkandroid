@@ -6,63 +6,24 @@ package com.payrix.sdklib.data.model;
 
 import java.util.List;
 
-//import com.google.gson.JsonObject;
-import org.json.JSONObject;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.payrix.sdklib.PayrixException;
-import com.payrix.sdklib.PayrixResponseException;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
-/*
-public class PayrixAPIResponse extends Object {
-    public JSONObject toJSON() throws PayrixException {
-        try {
-            return new JSONObject(this.toString());
-        } catch(JSONException e) {
-            throw new PayrixResponseException(e.getMessage());
-        }
-    }
-}
-*/
 
 public class PayrixAPIResponse {
 
-    @SerializedName("data")
+    @SerializedName("response")
     @Expose
-    private List<PayrixEntityModel> entities = null;
-    @SerializedName("details")
-    @Expose
-    private ResponseDetails details;
-    @SerializedName("errors")
-    @Expose
-    private List<PayrixAPIError> errors = null;
+    private PayrixAPIResponseContents response = null;
 
-    public List<PayrixEntityModel> getEntities() {
-        return entities;
+
+    public PayrixAPIResponseContents geResponse() {
+        return response;
     }
 
-    public void setEntities(List<PayrixEntityModel> entities) {
-        this.entities = entities;
+    public void setResponse(PayrixAPIResponseContents) {
+        this.response = response;
     }
-
-    public ResponseDetails getDetails() {
-        return details;
-    }
-
-    public void setDetails(ResponseDetails details) {
-        this.details = details;
-    }
-
-    public List<PayrixAPIError> getErrors() {
-        return errors;
-    }
-
-    public void setErrors(List<PayrixAPIError> errors) {
-        this.errors = errors;
-    }
-
 }

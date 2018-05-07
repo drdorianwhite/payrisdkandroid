@@ -39,7 +39,7 @@ public class RetrofitClient {
                     Request originalRequest = chain.request();
                     Request alteredRequest = originalRequest.newBuilder()
                             .addHeader("APIKEY", apiKey)
-                            .addHeader("Accept", "application/json")
+                            .addHeader("Content-Type", "application/json")
                             .method(originalRequest.method(), originalRequest.body())
                             .build();
 
@@ -50,9 +50,9 @@ public class RetrofitClient {
             OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
 
             clientBuilder
-                    //.addInterceptor(interceptor)
+                    .addInterceptor(interceptor)
                     .followRedirects(true)
-                    //.followSslRedirects(true)
+                    .followSslRedirects(true)
                     .retryOnConnectionFailure(true)
                     .cache(null)
                     .connectTimeout(5, TimeUnit.SECONDS)

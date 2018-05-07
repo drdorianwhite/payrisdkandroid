@@ -12,9 +12,11 @@ import retrofit2.http.*;
 
 public interface IPayrixService {
     @GET
+    @Headers({"Content-Type: application/json"})
     Call<PayrixAPIResponse> retrieve(@Url String path, @HeaderMap QueryFilterOptions options);
 
     @GET
+    @Headers({"Content-Type: application/json"})
     Call<PayrixAPIResponse> retrieve(@Url String pathWithId);
 
     @Headers({"Content-Type: application/json"})
@@ -28,6 +30,7 @@ public interface IPayrixService {
     Call<PayrixAPIResponse> update(@Url String pathWithId, @FieldMap  EntityFields updatedFieldData);
 
     @DELETE("/{id}")
+    @Headers({"Content-Type: application/json"})
     Call<PayrixAPIResponse> delete(@Url String pathWithId);
 }
 

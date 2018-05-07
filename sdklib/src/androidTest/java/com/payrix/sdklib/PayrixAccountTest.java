@@ -1,18 +1,24 @@
 package com.payrix.sdklib;
+
 import android.support.test.runner.AndroidJUnit4;
+import java.util.*;
 import com.payrix.sdklib.data.model.EntityFields;
+import com.payrix.sdklib.data.model.PayrixAPIError;
+import com.payrix.sdklib.data.model.ResponseDetails;
+import com.payrix.sdklib.data.model.PayrixEntityModel;
+import com.payrix.sdklib.data.model.AccountModel;
 import com.payrix.sdklib.data.model.PayrixAPIResponse;
 import com.payrix.sdklib.data.remote.PayrixAPI;
 import com.payrix.sdklib.data.remote.QueryFilterOptions;
 
+import org.awaitility.Awaitility;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.awaitility.Awaitility;
-import android.util.*;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -32,7 +38,15 @@ public class PayrixAccountTest {
             accounts.retrieve(new QueryFilterOptions(), new IPayrixResponseCallback() {
                 @Override
                 public void onSuccess(PayrixAPIResponse response) {
+                    List<PayrixAPIError> errors = response.getErrors();
+                    ResponseDetails details = response.getDetails();
+                    List<PayrixEntityModel> accounts = (List<PayrixEntityModel>)response.getEntities();
 
+                    for (PayrixEntityModel entity: accounts)
+                    {
+                        AccountModel account = (AccountModel)entity;
+                        account = account;
+                    }
                     assert (response.getErrors() != null);
                     atomic.set(true);
                 }
@@ -87,6 +101,7 @@ public class PayrixAccountTest {
 
                 @Override
                 public void onFailure(Throwable t) {
+
                     fail();
                 }
             });
