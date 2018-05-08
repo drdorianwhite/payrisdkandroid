@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/apitestapp/apitestapp.iml" filepath="$PROJECT_DIR$/apitestapp/apitestapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apitestapp/apitestapp.iml" filepath="$PROJECT_DIR$/apitestapp/apitestapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/payrisdkandroid.iml" filepath="$PROJECT_DIR$/payrisdkandroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/payrisdkandroid.iml" filepath="$PROJECT_DIR$/payrisdkandroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdklib/sdklib.iml" filepath="$PROJECT_DIR$/sdklib/sdklib.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdklib/sdklib.iml" filepath="$PROJECT_DIR$/sdklib/sdklib.iml" />
     </modules>
   </component>

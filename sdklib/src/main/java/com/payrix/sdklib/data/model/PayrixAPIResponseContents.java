@@ -12,11 +12,11 @@ import com.google.gson.annotations.SerializedName;
 
 
 
-public class PayrixAPIResponseContents {
+public class PayrixAPIResponseContents<T> {
 
     @SerializedName("data")
     @Expose
-    private List<PayrixEntityModel> entities = null;
+    private List<T> entities = null;
     @SerializedName("details")
     @Expose
     private ResponseDetails details;
@@ -24,11 +24,15 @@ public class PayrixAPIResponseContents {
     @Expose
     private List<PayrixAPIError> errors = null;
 
-    public List<PayrixEntityModel> getEntities() {
+    public PayrixAPIResponseContents() {
+
+    }
+
+    public List<T> getEntities() {
         return entities;
     }
 
-    public void setEntities(List<PayrixEntityModel> entities) {
+    public void setEntities(List<T> entities) {
         this.entities = entities;
     }
 

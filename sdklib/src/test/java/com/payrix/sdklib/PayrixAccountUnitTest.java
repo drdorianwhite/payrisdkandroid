@@ -9,10 +9,11 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class PayrixAccountTest {
-    /*
-    @Test
-    public void accountCreateWorks() throws Exception {
+
+public class PayrixAccountUnitTest {
+
+
+    /*public void accountCreateWorks() throws Exception {
         try {
             PayrixConfig.setAPIKey("ea29716caf7d4b6c42a28798e06d1f5d");
             PayrixAccountData data =  new PayrixAccountData();

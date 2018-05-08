@@ -4,6 +4,7 @@ import android.support.test.runner.AndroidJUnit4;
 import java.util.*;
 import com.payrix.sdklib.data.model.EntityFields;
 import com.payrix.sdklib.data.model.PayrixAPIError;
+import com.payrix.sdklib.data.model.PayrixAPIResponseContents;
 import com.payrix.sdklib.data.model.ResponseDetails;
 import com.payrix.sdklib.data.model.PayrixEntityModel;
 import com.payrix.sdklib.data.model.AccountModel;
@@ -35,19 +36,20 @@ public class PayrixAccountTest {
             PayrixConfig.setAPIKey("ea29716caf7d4b6c42a28798e06d1f5d");
             Accounts accounts = PayrixAPI.getAccounts();
 
-            accounts.retrieve(new QueryFilterOptions(), new IPayrixResponseCallback() {
+            accounts.retrieve(new QueryFilterOptions(), new IPayrixResponseCallback<AccountModel>() {
                 @Override
-                public void onSuccess(PayrixAPIResponse response) {
-                    List<PayrixAPIError> errors = response.getErrors();
-                    ResponseDetails details = response.getDetails();
-                    List<PayrixEntityModel> accounts = (List<PayrixEntityModel>)response.getEntities();
+                public void onSuccess(PayrixAPIResponse<AccountModel> response) {
+                    PayrixAPIResponseContents contents = response.getResponse();
+                    List<PayrixAPIError> errors = contents.getErrors();
+                    ResponseDetails details = contents.getDetails();
+                    List<AccountModel> accounts = (List<AccountModel>)contents.getEntities();
 
-                    for (PayrixEntityModel entity: accounts)
+                    for (AccountModel account: accounts)
                     {
-                        AccountModel account = (AccountModel)entity;
+
                         account = account;
                     }
-                    assert (response.getErrors() != null);
+                    assert (contents.getErrors() != null);
                     atomic.set(true);
                 }
 
@@ -80,8 +82,8 @@ public class PayrixAccountTest {
             accounts.retrieve(new QueryFilterOptions(),  new IPayrixResponseCallback() {
                 @Override
                 public void onSuccess(PayrixAPIResponse response) {
-
-                    assert(response.getErrors() != null);
+                    PayrixAPIResponseContents contents = response.getResponse();
+                    assert(contents.getErrors() != null);
                     atomic.set(true);
                 }
 
@@ -94,8 +96,8 @@ public class PayrixAccountTest {
             accounts.create(fields, new IPayrixResponseCallback() {
                 @Override
                 public void onSuccess(PayrixAPIResponse response) {
-
-                    assert(response.getErrors() != null);
+                    PayrixAPIResponseContents contents = response.getResponse();
+                    assert(contents.getErrors() != null);
                     atomic.set(true);
                 }
 

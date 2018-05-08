@@ -12,18 +12,21 @@ import com.google.gson.annotations.SerializedName;
 
 
 
-public class PayrixAPIResponse {
+public class PayrixAPIResponse<T extends PayrixEntityModel> {
 
     @SerializedName("response")
     @Expose
-    private PayrixAPIResponseContents response = null;
+    private PayrixAPIResponseContents<T> response = null;
 
+    public PayrixAPIResponse() {
+        response = new PayrixAPIResponseContents<T>();
+    }
 
-    public PayrixAPIResponseContents geResponse() {
+    public PayrixAPIResponseContents<T> getResponse() {
         return response;
     }
 
-    public void setResponse(PayrixAPIResponseContents response) {
+    public void setResponse(PayrixAPIResponseContents<T> response) {
         this.response = response;
     }
 }
