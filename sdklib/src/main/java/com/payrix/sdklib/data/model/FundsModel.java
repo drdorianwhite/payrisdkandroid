@@ -1,14 +1,10 @@
 package com.payrix.sdklib.data.model;
 
-/**
- * Created by Administrator on 3/11/2018.
- */
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AccountModel
-        extends PayrixEntityModel {
+public class FundsModel  extends PayrixEntityModel {
 
     @SerializedName("id")
     @Expose
@@ -28,34 +24,27 @@ public class AccountModel
     @SerializedName("entity")
     @Expose
     private String entity;
-    @SerializedName("token")
-    @Expose
-    private String token;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("description")
-    @Expose
-    private String description;
-    @SerializedName("primary")
-    @Expose
-    private Integer primary;
-    @SerializedName("status")
-    @Expose
-    private Integer status;
     @SerializedName("currency")
     @Expose
     private String currency;
+    @SerializedName("reserved")
+    @Expose
+    private Integer reserved;
+    @SerializedName("pending")
+    @Expose
+    private Integer pending;
+    @SerializedName("available")
+    @Expose
+    private Integer available;
+    @SerializedName("total")
+    @Expose
+    private Integer total;
     @SerializedName("inactive")
     @Expose
     private Integer inactive;
     @SerializedName("frozen")
     @Expose
     private Integer frozen;
-
-    public AccountModel() {
-
-    }
 
     public String getId() {
         return id;
@@ -105,52 +94,44 @@ public class AccountModel
         this.entity = entity;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getPrimary() {
-        return primary;
-    }
-
-    public void setPrimary(Integer primary) {
-        this.primary = primary;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
     public String getCurrency() {
         return currency;
     }
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public Integer getReserved() {
+        return reserved;
+    }
+
+    public void setReserved(Integer reserved) {
+        this.reserved = reserved;
+    }
+
+    public Integer getPending() {
+        return pending;
+    }
+
+    public void setPending(Integer pending) {
+        this.pending = pending;
+    }
+
+    public Integer getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(Integer available) {
+        this.available = available;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
     public Integer getInactive() {
