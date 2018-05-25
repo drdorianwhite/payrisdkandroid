@@ -3,23 +3,24 @@ package com.payrix.sdklib.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PayoutModel extends PayrixEntityModel {
+public class FeeModel  extends PayrixEntityModel {
+
 
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("login")
-    @Expose
-    private String login;
     @SerializedName("entity")
     @Expose
     private String entity;
-    @SerializedName("account")
+    @SerializedName("forentity")
     @Expose
-    private String account;
-    @SerializedName("payFlow")
+    private String forEntity;
+    @SerializedName("org")
     @Expose
-    private String payFlow;
+    private String org;
+    @SerializedName("type")
+    @Expose
+    private int type;
     @SerializedName("name")
     @Expose
     private String name;
@@ -35,18 +36,27 @@ public class PayoutModel extends PayrixEntityModel {
     @SerializedName("start")
     @Expose
     private String start;
+    @SerializedName("finish")
+    @Expose
+    private String finish;
+    @SerializedName("collection")
+    @Expose
+    private Integer collection;
+    @SerializedName("collectionFactor")
+    @Expose
+    private Integer collectionFactor;
+    @SerializedName("collectionOffset")
+    @Expose
+    private Integer collectionOffset;
     @SerializedName("um")
     @Expose
     private Integer um;
     @SerializedName("amount")
     @Expose
     private Integer amount;
-    @SerializedName("minimum")
+    @SerializedName("currency")
     @Expose
-    private Integer minimum;
-    @SerializedName("skipOffDays")
-    @Expose
-    private Integer skipOffDays;
+    private String currency;
     @SerializedName("inactive")
     @Expose
     private Integer inactive;
@@ -62,14 +72,6 @@ public class PayoutModel extends PayrixEntityModel {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getEntity() {
         return entity;
     }
@@ -78,20 +80,28 @@ public class PayoutModel extends PayrixEntityModel {
         this.entity = entity;
     }
 
-    public String getAccount() {
-        return account;
+    public String getForEntity() {
+        return forEntity;
     }
 
-    public void setAccount(String account) {
-        this.account = account;
+    public void setForEntity(String forEntity) {
+        this.forEntity = forEntity;
     }
 
-    public String getPayFlow() {
-        return payFlow;
+    public Integer getType() {
+        return type;
     }
 
-    public void setPayFlow(String payFlow) {
-        this.payFlow = payFlow;
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getOrg() {
+        return org;
+    }
+
+    public void setOrg(String org) {
+        this.org = org;
     }
 
     public String getName() {
@@ -126,12 +136,45 @@ public class PayoutModel extends PayrixEntityModel {
         this.scheduleFactor = scheduleFactor;
     }
 
+
+    public void setCollection(Integer collection) {
+        this.collection = collection;
+    }
+
+    public Integer getCollection() {
+        return collection;
+    }
+
+    public void setCollectionFactor(Integer collectionFactor) {
+        this.collectionFactor = collectionFactor;
+    }
+
+    public Integer getCollectionFactor() {
+        return collectionFactor;
+    }
+
+    public void setCollectionOffset(Integer collectionOffset) {
+        this.collectionOffset = collectionOffset;
+    }
+
+    public Integer getCollectionOffset() {
+        return collectionOffset;
+    }
+
     public void setStart(String start) {
         this.start = start;
     }
 
     public String getStart() {
         return start;
+    }
+
+    public void setFinish(String finish) {
+        this.finish = finish;
+    }
+
+    public String getFinish() {
+        return finish;
     }
 
     public void setUm(Integer um) {
@@ -150,22 +193,6 @@ public class PayoutModel extends PayrixEntityModel {
         return amount;
     }
 
-    public void setMinimum(Integer minimum) {
-        this.minimum = minimum;
-    }
-
-    public Integer getMinimum() {
-        return minimum;
-    }
-
-    public void setSkipOffDays(Integer skipOffDays) {
-        this.skipOffDays = skipOffDays;
-    }
-
-    public Integer getSkipOffDays() {
-        return skipOffDays;
-    }
-
     public void setInactive(Integer inactive) {
         this.inactive = inactive;
     }
@@ -181,4 +208,6 @@ public class PayoutModel extends PayrixEntityModel {
     public Integer getFrozen() {
         return frozen;
     }
+
+
 }

@@ -5,7 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class FeeRuleModel  extends PayrixEntityModel {
 
-
+    @SerializedName("id")
+    @Expose
+    private String id;
     @SerializedName("fee")
     @Expose
     private String fee;
@@ -33,6 +35,14 @@ public class FeeRuleModel  extends PayrixEntityModel {
     @SerializedName("frozen")
     @Expose
     private int frozen;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFee() {
         return fee;

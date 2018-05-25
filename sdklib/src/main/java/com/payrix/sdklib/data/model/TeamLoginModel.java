@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class TeamLoginModel extends PayrixEntityModel {
 
+    @SerializedName("id")
+    @Expose
+    private String id;
     @SerializedName("login")
     @Expose
     private String login;
@@ -29,6 +32,14 @@ public class TeamLoginModel extends PayrixEntityModel {
     @SerializedName("teamAdmin")
     @Expose
     private Integer teamAdmin;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
 
     public String getLogin() {

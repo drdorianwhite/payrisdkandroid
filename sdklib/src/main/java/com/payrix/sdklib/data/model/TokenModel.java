@@ -6,6 +6,9 @@ import com.payrix.sdklib.data.model.PayrixEntityModel;
 
 public class TokenModel  extends PayrixEntityModel {
 
+    @SerializedName("id")
+    @Expose
+    private String id;
     @SerializedName("customer")
     @Expose
     private String customer;
@@ -27,6 +30,14 @@ public class TokenModel  extends PayrixEntityModel {
     @SerializedName("frozen")
     @Expose
     private Integer frozen;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getCustomer() {
         return customer;

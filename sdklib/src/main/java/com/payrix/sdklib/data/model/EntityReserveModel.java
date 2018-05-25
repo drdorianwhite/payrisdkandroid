@@ -5,6 +5,9 @@ import com.google.gson.annotations.Expose;
 
 public class EntityReserveModel  extends PayrixEntityModel {
 
+    @SerializedName("id")
+    @Expose
+    private String id;
 
     @SerializedName("login")
     @Expose
@@ -23,5 +26,54 @@ public class EntityReserveModel  extends PayrixEntityModel {
     @SerializedName("description")
     @Expose
     private String description;
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getFund() {
+        return fund;
+    }
+
+    public void setFund(String fund) {
+        this.fund = fund;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String  description) {
+        this.description = description;
+    }
 
 }
