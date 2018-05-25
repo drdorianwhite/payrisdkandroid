@@ -47,6 +47,9 @@ public class ReserveModel extends PayrixEntityModel {
     @SerializedName("finish")
     @Expose
     private String finish;
+    @SerializedName("start")
+    @Expose
+    private String start;
     @SerializedName("inactive")
     @Expose
     private Integer inactive;
@@ -173,6 +176,14 @@ public class ReserveModel extends PayrixEntityModel {
 
     public String getFinish() {
         return finish;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getStart() {
+        return start;
     }
 
     public void setInactive(Integer inactive) {
